@@ -1,0 +1,26 @@
+{
+  "name": "tigma-front-end",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "antd": "^3.2.3",
+    "apollo-client-preset": "^1.0.8",
+    "graphql": "^0.13.1",
+    "graphql-tag": "^2.8.0",
+    "jwt-decode": "^2.2.0",
+    "moment": "^2.21.0",
+    "moment-duration-format": "^2.2.2",
+    "react": "^16.2.0",
+    "react-apollo": "^2.0.4",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.1",
+    "react-table": "^6.8.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
