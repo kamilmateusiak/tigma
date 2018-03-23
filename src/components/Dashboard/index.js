@@ -1,11 +1,21 @@
 import React from 'react';
 import { Input, Icon, Col } from 'antd';
+import styled from 'styled-components';
 const InputGroup = Input.Group;
+
+const Wrapper = styled.div`
+	max-width: 960px;
+`;
+
+const AppTitle = styled.h1`
+	margin: 0 auto;
+	text-align: center;
+`;
 
 const Home = ({currentTrack, trackDuration, trackDescription, changeDescription}) => {
 	return (
-		<div style={{maxWidth: '960px'}}>
-			<h1 style={{margin: '0 auto', 'textAlign': 'center'}}>Tigma</h1>
+		<Wrapper>
+			<AppTitle>Tigma</AppTitle>
 			{ currentTrack && 
 				<div>
 					<h3>Current: </h3>
@@ -20,7 +30,7 @@ const Home = ({currentTrack, trackDuration, trackDescription, changeDescription}
 					</InputGroup>
 				</div> 
 			}
-		</div>
+		</Wrapper>
 	)
 }
 

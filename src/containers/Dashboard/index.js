@@ -5,8 +5,12 @@ import { Spin } from 'antd';
 import DashboardComponent from '../../components/Dashboard';
 import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
+import Loader from '../../components/Loader';
 
 momentDurationFormatSetup(moment);
+
+const SECOND = 1000;
+const HOUR = 3600000;
 
 class Dashboard extends Component {
 	state = {
@@ -15,36 +19,43 @@ class Dashboard extends Component {
 	}
 
 	componentWillReceiveProps(newProps){
-        if(!newProps.loading && newProps.currentTrack){
+        if(!newProps.loading && newProps.currentTrack) {
+			const { start, description } = newProps.currentTrack;
+			/**
+			 * TODO:
+			 * times from database localization, removing HOUR constant
+			 */
 			this.setState({
-				trackDuration: new Date() - new Date(newProps.currentTrack.start) + 3600000,
-				trackDescription: newProps.currentTrack.description
-			})
-			setInterval(() => {
-				this.setState({
-					trackDuration: this.state.trackDuration + 1000
-				})
-			}, 1000)
+				trackDuration: new Date() - new Date(start) + HOUR,
+				trackDescription: description
+			}, () => setInterval(() => {
+				this.setState({ trackDuration: this.state.trackDuration + SECOND })
+			}, SECOND));
 		}
 	}
 	
 	changeDescription = (e) => {
-		console.log(e);
-		const newValue = e.target.value;
-		this.setState({
-			trackDescription: newValue
-		}) 
+		const trackDescription = e.target.value;
+		this.setState({ trackDescription }) 
 	}
 
 	render () {
-    	const { loading, currentTrack } = this.props;
+		const { loading, currentTrack } = this.props;
+		const { trackDuration, trackDescription } = this.state;
 		if (loading) {
-			return <Spin size="large" style={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>;
+			return <Loader />;
 		}
 
-		const trackDuration = moment.duration(this.state.trackDuration, "milliseconds").format("h:mm:ss", { trim: false })
+		const formatedDuration = moment.duration(trackDuration, "milliseconds").format("h:mm:ss", { trim: false })
 		
-		return <DashboardComponent currentTrack={currentTrack} trackDescription={this.state.trackDescription} trackDuration={trackDuration} changeDescription={this.changeDescription}/>
+		return ( 
+			<DashboardComponent 
+				currentTrack={currentTrack}
+				trackDescription={trackDescription}
+				trackDuration={formatedDuration}
+				changeDescription={this.changeDescription}
+			/>
+		);
 	}
 }
 

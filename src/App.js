@@ -6,6 +6,7 @@ import Dashboard from './containers/Dashboard'
 import SprintsList from './containers/SprintsList'
 import SidebarNavigation from './containers/SidebarNavigation'
 import NavbarNavigation from './containers/NavbarNavigation'
+import Calendar from './containers/Calendar'
 import LoginPage from './containers/LoginPage'
 import 'react-table/react-table.css'
 import { Switch } from 'react-router-dom'
@@ -26,11 +27,11 @@ class App extends Component {
               <AuthRoute exact path='/' component={Dashboard}/>
               <NotAuthRoute path='/login' component={LoginPage} />
               <AuthRoute path='/task' component={Task} />
+              <AuthRoute path='/calendar' component={Calendar} />
               <AuthRoute exact path='/project/:slug' component={Project} />
               <AuthRoute path='/sprints/active' component={SprintsList} />
             </Switch>
           </Content>
-          <Footer>Footer</Footer>
         </Layout>
       </Layout>
     );
