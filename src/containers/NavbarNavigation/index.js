@@ -14,10 +14,10 @@ class NavbarNavigation extends Component {
     }
   }
 
-  userMenu = (
+  userMenu = (userId) => (
     <Menu onClick={this.dropdownActions}>
       <Menu.Item key='profile'>
-        <div>Profile</div>
+        <NavLink to={`/profile/${userId}`}>Profile</NavLink>
       </Menu.Item>
       <Menu.Item key='logout'>
         <div>Logout</div>
@@ -27,6 +27,7 @@ class NavbarNavigation extends Component {
 
   render() {
     const { me: user } = this.props
+
     return (
       <Menu
         mode="horizontal"
@@ -54,9 +55,9 @@ class NavbarNavigation extends Component {
             return <Menu.Item key={project.project_slug}><NavLink to={`/project/${project.project_slug}`}>{project.project_name}</NavLink></Menu.Item>
           })}
         </SubMenu>
-        <Dropdown overlay={this.userMenu}>
+        { user && <Dropdown overlay={this.userMenu(user.ID)}>
           <div style={{minWidth: '150px'}}><Avatar icon="user" style={{alignSelf: 'center', margin: '0 10px'}}></Avatar> {user && user.display_name} </div>
-        </Dropdown>
+        </Dropdown> }
       </Menu>
     )
   }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col, Timeline } from 'antd';
 import _ from 'lodash';
 import moment from 'moment';
@@ -19,7 +20,7 @@ const Project = ({project}) => {
 					<Timeline>
 						{ project.users_time && project.users_time.map(user => (
 							<Timeline.Item key={user.ID}>
-								<p><b>{user.display_name}</b> {moment.duration(user.time, "milliseconds").format("h:mm", { trim: false })} h </p>
+								<p><Link to={`/profile/${user.ID}`}><b>{user.display_name}</b></Link> {moment.duration(user.time, "milliseconds").format("h:mm", { trim: false })} h </p>
 							</Timeline.Item>
 						)) }
 					</Timeline>

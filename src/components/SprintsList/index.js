@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ReactTable from 'react-table'
 import moment from 'moment'
 import momentDurationFormatSetup from 'moment-duration-format';
@@ -23,7 +24,7 @@ const SprintsList = ({projectPhases}) => {
 					<div>
 						{row.row.users_time.map((time) => (
 							<div key={time.ID}>
-								[<b>{time.display_name}</b>] - {moment.duration(time.time, "milliseconds").format("h:mm", { trim: false })} h
+								[<Link to={`/profile/${time.ID}`}><b>{time.display_name}</b></Link>] - {moment.duration(time.time, "milliseconds").format("h:mm", { trim: false })} h
 							</div>
 						))}
 					</div>

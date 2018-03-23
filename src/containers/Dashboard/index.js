@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
-import { Spin } from 'antd';
-import DashboardComponent from '../../components/Dashboard';
+import gql from 'graphql-tag';
 import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
-import Loader from '../../components/Loader';
+import { Spin } from 'antd';
+import { graphql } from 'react-apollo';
+import DashboardComponent from 'components/Dashboard';
+import Loader from 'components/Loader';
 
 momentDurationFormatSetup(moment);
 
@@ -22,8 +22,7 @@ class Dashboard extends Component {
         if(!newProps.loading && newProps.currentTrack) {
 			const { start, description } = newProps.currentTrack;
 			/**
-			 * TODO:
-			 * times from database localization, removing HOUR constant
+			 * TODO: times from database localization, removing HOUR constant
 			 */
 			this.setState({
 				trackDuration: new Date() - new Date(start) + HOUR,
