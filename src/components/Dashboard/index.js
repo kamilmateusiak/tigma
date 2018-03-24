@@ -8,7 +8,7 @@ const AppTitle = styled.h1`
 	text-align: center;
 `;
 
-const Home = ({currentTrack, trackDuration, trackDescription, changeDescription}) => {
+const Dashboard = ({currentTrack, trackDuration, trackDescription, changeDescription, summary}) => {
 	return (
 		<Fragment>
 			<AppTitle>Tigma</AppTitle>
@@ -26,9 +26,10 @@ const Home = ({currentTrack, trackDuration, trackDescription, changeDescription}
 					</InputGroup>
 				</div> 
 			}
+			<div>Summary this month: {summary}</div>
 		</Fragment>
 	)
 }
 
-export default Home;
+export default Dashboard;
 

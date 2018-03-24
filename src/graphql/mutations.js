@@ -1,13 +1,13 @@
 import gql from 'graphql-tag';
 
 export const USER_LOGOUT = gql`
-	mutation {
+	mutation Logout {
 		logout
 	}
 `;
 
 export const USER_LOGIN = gql`
-	mutation($email: String!, $password: String!) {
+	mutation Login($email: String!, $password: String!) {
 		login(email: $email, password: $password)
 	}
 `;

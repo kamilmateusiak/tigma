@@ -1,18 +1,18 @@
 import gql from 'graphql-tag';
 
 export const SPRINTS_QUERY = gql`
-  {
+  query ProjectPhaseQuery {
     projectPhases(state: "active") {
-		phase_name
-		phase_start
-		project {
-			project_name
-		}
-		users_time {
-			ID
-			display_name
-			time
-		}
+			phase_name
+			phase_start
+			project {
+				project_name
+			}
+			users_time {
+				ID
+				display_name
+				time
+			}
     }
   }
 `;
@@ -51,27 +51,33 @@ export const PROFILE_USER_QUERY = gql`
 `;
 
 export const LOGGED_USER_QUERY = gql`
-  	query {
-    	me {
+	query LoggedUserQuery {
+		me {
 			ID
-      		display_name
+			display_name
 			projects {
-        		project_id
+				project_id
 				project_name
 				project_slug
 				project_type
 				project_status
 			}
-    	}
-  	}
+		}
+	}
 `;
 
 export const CURRENT_TRACK_QUERY = gql`
   query CurrentTrackQuery {
     currentTrack {
-		description
-		start
-		stop
-	}
+			description
+			start
+			stop
+		}
+  }
+`;
+
+export const SUMMARY_QUERY = gql`
+  query SummaryQuery {
+    summary
   }
 `;

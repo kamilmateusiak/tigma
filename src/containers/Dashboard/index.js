@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
-import { graphql } from 'react-apollo';
+import { graphql, compose } from 'react-apollo';
 import DashboardComponent from 'components/Dashboard';
 import Loader from 'components/Loader';
-import { CURRENT_TRACK_QUERY } from 'graphql/queries';
+import { CURRENT_TRACK_QUERY, SUMMARY_QUERY } from 'graphql/queries';
 
 momentDurationFormatSetup(moment);
 
@@ -38,13 +38,14 @@ class Dashboard extends Component {
 	}
 
 	render () {
-		const { loading, currentTrack } = this.props;
+		const { loading, currentTrack, summary } = this.props;
 		const { trackDuration, trackDescription } = this.state;
 		if (loading) {
 			return <Loader />;
 		}
 
 		const formatedDuration = moment.duration(trackDuration, "milliseconds").format("h:mm:ss", { trim: false })
+		const formatedSummary = moment.duration(summary, "milliseconds").format("h:mm", { trim: false })
 		
 		return ( 
 			<DashboardComponent 
@@ -52,11 +53,17 @@ class Dashboard extends Component {
 				trackDescription={trackDescription}
 				trackDuration={formatedDuration}
 				changeDescription={this.changeDescription}
+				summary={formatedSummary}
 			/>
 		);
 	}
 }
 
-export default graphql(CURRENT_TRACK_QUERY, {
-    props: ({ data }) => ({...data})
-})(Dashboard);
+export default compose(
+	graphql(CURRENT_TRACK_QUERY, {
+		props: ({ data }) => ({...data})
+	}),
+	graphql(SUMMARY_QUERY, {
+    	props: ({ data }) => ({...data})
+	})
+)(Dashboard);
