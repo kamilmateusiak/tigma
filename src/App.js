@@ -18,7 +18,7 @@ import Task from 'components/Task.js';
 // helpers
 import { NotAuthRoute, AuthRoute, checkAuth } from './auth';
 
-const { Content, Footer, Header } = Layout;
+const { Content, Header } = Layout;
 
 class App extends Component {
   render() {

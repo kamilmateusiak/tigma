@@ -1,11 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Input, Icon, Col } from 'antd';
 import styled from 'styled-components';
 const InputGroup = Input.Group;
-
-const Wrapper = styled.div`
-	max-width: 960px;
-`;
 
 const AppTitle = styled.h1`
 	margin: 0 auto;
@@ -14,7 +10,7 @@ const AppTitle = styled.h1`
 
 const Home = ({currentTrack, trackDuration, trackDescription, changeDescription}) => {
 	return (
-		<Wrapper>
+		<Fragment>
 			<AppTitle>Tigma</AppTitle>
 			{ currentTrack && 
 				<div>
@@ -30,7 +26,7 @@ const Home = ({currentTrack, trackDuration, trackDescription, changeDescription}
 					</InputGroup>
 				</div> 
 			}
-		</Wrapper>
+		</Fragment>
 	)
 }
 

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
-import { Spin } from 'antd';
+import { graphql } from 'react-apollo';
+import Loader from 'components/Loader';
+import { PROFILE_USER_QUERY } from 'graphql/queries';
 
 class Project extends Component {
 	render () {
     	const { loading, user } = this.props;
 		if (loading) {
-			return <Spin size="large" style={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)'}}/>;
+			return <Loader />;
     	}
 		return (
 			<div>{user.display_name}</div>
@@ -15,17 +15,7 @@ class Project extends Component {
 	}
 }
 
-const USER_QUERY = gql`
-  query UserQuery($id: ID!) {
-    user(id: $id) {
-		ID
-		display_name
-		user_email
-    }
-  }
-`;
-
-export default graphql(USER_QUERY, {
+export default graphql(PROFILE_USER_QUERY, {
     options: (ownProps) => ({
       variables: { id: ownProps.match.params.id }
     }),

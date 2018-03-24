@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import gql from 'graphql-tag';
 import { Row } from 'antd';
 import { graphql } from 'react-apollo';
 import LoginForm from 'components/LoginForm';
+import { USER_LOGIN } from 'graphql/mutations';
 
 class LoginPage extends Component {
   state = {
@@ -36,10 +36,4 @@ class LoginPage extends Component {
   }
 }
 
-const mutation = gql`
-  mutation($email: String!, $password: String!) {
-    login(email: $email, password: $password)
-  }
-`;
-
-export default graphql(mutation)(LoginPage);
+export default graphql(USER_LOGIN)(LoginPage);

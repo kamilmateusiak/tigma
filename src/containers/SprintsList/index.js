@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { graphql } from 'react-apollo'
-import gql from 'graphql-tag'
-import _ from 'lodash'
-import SprintsListComponent from '../../components/SprintsList'
-import Loader from '../../components/Loader';
+import { graphql } from 'react-apollo';
+import _ from 'lodash';
+import SprintsListComponent from 'components/SprintsList';
+import Loader from 'components/Loader';
+import { SPRINTS_QUERY } from 'graphql/queries';
 
 class SprintsList extends Component {
 	render () {
@@ -16,23 +16,6 @@ class SprintsList extends Component {
 		return <SprintsListComponent projectPhases={orderedPhases} />
 	}
 }
-
-const SPRINTS_QUERY = gql`
-  {
-    projectPhases(state: "active") {
-		phase_name
-		phase_start
-		project {
-			project_name
-		}
-		users_time {
-			ID
-			display_name
-			time
-		}
-    }
-  }
-`;
 
 export default graphql(SPRINTS_QUERY, {
     props: ({ data }) => ({...data})

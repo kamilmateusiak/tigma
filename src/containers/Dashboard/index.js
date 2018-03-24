@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import gql from 'graphql-tag';
 import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
-import { Spin } from 'antd';
 import { graphql } from 'react-apollo';
 import DashboardComponent from 'components/Dashboard';
 import Loader from 'components/Loader';
+import { CURRENT_TRACK_QUERY } from 'graphql/queries';
 
 momentDurationFormatSetup(moment);
 
@@ -57,16 +56,6 @@ class Dashboard extends Component {
 		);
 	}
 }
-
-const CURRENT_TRACK_QUERY = gql`
-  query CurrentTrackQuery {
-    currentTrack {
-		description
-		start
-		stop
-	}
-  }
-`;
 
 export default graphql(CURRENT_TRACK_QUERY, {
     props: ({ data }) => ({...data})

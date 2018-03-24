@@ -3,7 +3,9 @@ import { Menu, Icon, Dropdown, Avatar } from 'antd';
 import { NavLink } from 'react-router-dom';
 import { graphql, compose } from 'react-apollo'
 import _ from 'lodash';
-import gql from 'graphql-tag'
+import { LOGGED_USER_QUERY } from 'graphql/queries';
+import { USER_LOGOUT } from 'graphql/mutations';
+
 const SubMenu = Menu.SubMenu;
 
 class NavbarNavigation extends Component {
@@ -63,30 +65,8 @@ class NavbarNavigation extends Component {
   }
 }
 
-const USER_QUERY = gql`
-  query {
-    me {
-			ID
-      display_name
-			projects {
-        project_id
-				project_name
-        project_slug
-        project_type
-        project_status
-			}
-    }
-  }
-`
-
-const USER_LOGOUT = gql`
-  mutation {
-    logout
-  }
-`
-
 export default compose(
-  graphql(USER_QUERY, {
+  graphql(LOGGED_USER_QUERY, {
     props: ({ data }) => ({...data})
   }),
   graphql(USER_LOGOUT),
