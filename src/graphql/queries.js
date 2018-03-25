@@ -57,6 +57,7 @@ export const LOGGED_USER_QUERY = gql`
 			display_name
 			projects {
 				project_id
+				project_number
 				project_name
 				project_slug
 				project_type
@@ -72,6 +73,7 @@ export const CURRENT_TRACK_QUERY = gql`
 			description
 			start
 			stop
+			project_id
 		}
   }
 `;
