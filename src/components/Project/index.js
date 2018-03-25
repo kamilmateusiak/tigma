@@ -2,14 +2,27 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Row, Col, Timeline } from 'antd';
 import _ from 'lodash';
+import styled from 'styled-components';
 import moment from 'moment';
 import momentDurationFormatSetup from 'moment-duration-format';
+import TimetrackBar from 'containers/TimetrackBar';
+
+const Tile = styled.div`
+	box-shadow: 0 0 3px 1px rgb(9, 79, 146);
+	padding: 32px;
+	margin: 8px 0;
+	width: ${props => props.width || '100%'};
+	background-color: #fff;
+`;
 
 momentDurationFormatSetup(moment);
 
 const Project = ({project}) => {
 	return (
 		<div>
+			<Tile>
+				<TimetrackBar />
+			</Tile>
 			<h1>{project.project_name}</h1>
 			<h4>{project.project_number}</h4>
 			<h5>{project.project_type}</h5>

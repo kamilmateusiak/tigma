@@ -16,7 +16,7 @@ const LoginForm = (props) => {
 	}
 
 	return (
-		<Form onSubmit={onSubmit} className="login-form" style={{minWidth: '400px', boxShadow: '0 0 3px 2px rgb(9, 79, 146)', padding: '20px', backgroundColor: '#fff'}}>
+		<Form onSubmit={onSubmit} className="login-form" style={{minWidth: '400px', boxShadow: '0 0 3px 1px rgb(9, 79, 146)', padding: '20px', backgroundColor: '#fff'}}>
 			<FormItem>
 				{getFieldDecorator('email', { rules: [{ required: true, message: 'Please input your email!' }] })(
 					<Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Email" />

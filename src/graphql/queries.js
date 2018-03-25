@@ -78,6 +78,9 @@ export const CURRENT_TRACK_QUERY = gql`
 
 export const SUMMARY_QUERY = gql`
   query SummaryQuery {
-    summary
+    summary {
+			time_month
+			time_day
+		}
   }
 `;
