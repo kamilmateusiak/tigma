@@ -55,6 +55,7 @@
         "no-trailing-whitespace": false,
         "no-unused-expression": true,
         "no-use-before-declare": true,
+        "jsx-boolean-value": false,
         "one-line": [
             true,
             "check-catch",

@@ -32,12 +32,12 @@ class App extends Component {
           </Header> }
           <Content style={{ 'position': 'relative' , padding: '20px'}}>
             <Switch>
-              <AuthRoute exact={true} path='/' component={Dashboard}/>
+              <AuthRoute exact path='/' component={Dashboard}/>
               <NotAuthRoute path='/login' component={LoginPage} />
               <AuthRoute path='/task' component={Task} />
               <AuthRoute path='/profile/:id' component={Profile} />
               <AuthRoute path='/calendar' component={Calendar} />
-              <AuthRoute exact={true} path='/project/:slug' component={Project} />
+              <AuthRoute exact path='/project/:slug' component={Project} />
               <AuthRoute path='/sprints/active' component={SprintsList} />
             </Switch>
           </Content>
