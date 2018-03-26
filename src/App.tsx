@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 import { Switch } from 'react-router-dom';
 import { Layout } from 'antd';
 // styles
@@ -31,12 +32,12 @@ class App extends Component {
           </Header> }
           <Content style={{ 'position': 'relative' , padding: '20px'}}>
             <Switch>
-              <AuthRoute exact path='/' component={Dashboard}/>
+              <AuthRoute exact={true} path='/' component={Dashboard}/>
               <NotAuthRoute path='/login' component={LoginPage} />
               <AuthRoute path='/task' component={Task} />
               <AuthRoute path='/profile/:id' component={Profile} />
               <AuthRoute path='/calendar' component={Calendar} />
-              <AuthRoute exact path='/project/:slug' component={Project} />
+              <AuthRoute exact={true} path='/project/:slug' component={Project} />
               <AuthRoute path='/sprints/active' component={SprintsList} />
             </Switch>
           </Content>
