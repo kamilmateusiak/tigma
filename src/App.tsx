@@ -15,7 +15,7 @@ import Calendar from 'containers/Calendar';
 import LoginPage from 'containers/LoginPage';
 import Profile from 'containers/Profile';
 // components
-import Task from 'components/Task.js';
+import Task from 'components/Task';
 // helpers
 import { NotAuthRoute, AuthRoute, checkAuth } from './auth';
 
