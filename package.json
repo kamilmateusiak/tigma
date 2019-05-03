@@ -1,12 +1,12 @@
 {
-  "name": "tigma-front-end",
+  "name": "front-ts",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "antd": "^3.2.3",
     "apollo-client-preset": "^1.0.8",
     "dhtmlx-gantt": "^5.1.0",
-    "graphql": "^0.13.1",
+    "graphql": "^0.12.3",
     "graphql-tag": "^2.8.0",
     "jwt-decode": "^2.2.0",
     "moment": "^2.21.0",
@@ -16,13 +16,24 @@
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.1",
+    "react-scripts-ts": "2.14.0",
     "react-table": "^6.8.0",
     "styled-components": "^3.2.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+    "test": "react-scripts-ts test --env=jsdom",
+    "eject": "react-scripts-ts eject"
+  },
+  "devDependencies": {
+    "@types/jest": "^22.2.2",
+    "@types/node": "^9.6.0",
+    "@types/react": "^16.0.41",
+    "@types/react-dom": "^16.0.4",
+    "@types/graphql": "^0.12.6",
+    "@types/prop-types": "^15.5.2",
+    "@types/react-router-dom": "^4.2.5",
+    "typescript": "^2.7.2"
   }
 }

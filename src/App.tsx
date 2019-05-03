@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Component } from 'react';
 import { Switch } from 'react-router-dom';
 import { Layout } from 'antd';
 // styles
@@ -14,7 +15,7 @@ import Calendar from 'containers/Calendar';
 import LoginPage from 'containers/LoginPage';
 import Profile from 'containers/Profile';
 // components
-import Task from 'components/Task.js';
+import Task from 'components/Task';
 // helpers
 import { NotAuthRoute, AuthRoute, checkAuth } from './auth';
 
